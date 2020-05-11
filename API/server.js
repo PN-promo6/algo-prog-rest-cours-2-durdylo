@@ -115,6 +115,49 @@ let users = [
     }
 ];
 
+let posts = [
+    {
+        id: 0,
+        titleMatch: "Shawn Michaels vs Undertaker",
+        body: "This match change the future of pro wrestling and WWE",
+        idUser: "5eaecda0cba960e77fc9f205",
+        year: 2009,
+        ppvOrWeekly: "Wrestlemania 25",
+        stars: 5,
+        federation: "WWE"
+    },
+    {
+        id: 1,
+        titleMatch: "Young Bucks vs Kenny Omega and Adam Page",
+        body: "Amazing tag team match for the AEW tag team championship. The story is perfectly perform.",
+        idUser: "5eaecda01070c34da892e9e5",
+        year: 2020,
+        ppvOrWeekly: "Revolution 2020",
+        stars: 5,
+        federation: "AEW"
+    },
+    {
+        id: 2,
+        titleMatch: "Undertaker vs Triple H inside Hell in a cell (with Shawn Michaels special guest referee)",
+        body: "Amazing match with a perfect story telling. This match sign the end of an era.",
+        idUser: "5eaecda01070c34da892e9e5",
+        year: 2012,
+        ppvOrWeekly: "Wrestlemania 28",
+        stars: 4.5,
+        federation: "WWE"
+    },
+    {
+        id: 3,
+        titleMatch: "John Cena vs CM Punk for the WWE championship",
+        body: "The context of the match is perfect. Last day of CM Punk contract with WWE. In CM Punk home town Chicago the arena was on fire. If CM Punk win he lives WWE with the biggest title of the federation. The match open the doors of the hall of fame for the two superstars.",
+        idUser: "5eaecda01865876300aada64",
+        year: 2011,
+        ppvOrWeekly: "Money In The Bank",
+        stars: 5,
+        federation: "WWE"
+    }
+
+]
 
 let corsOptions = {
     origin: "*"
@@ -129,6 +172,10 @@ app.get('/users', function (req, res) {
     res.send(users);
 });
 
+app.get('/posts', function (req, res) {
+    res.send(posts);
+});
+
 app.get('/users/:id', function (req, res) {
 
     let id = req.params.id;
@@ -141,6 +188,42 @@ app.get('/users/:id', function (req, res) {
             break;
         }
     }
+
+    res.statusMessage = "User Not found";
+    res.status();
+});
+
+// app.get('/posts/:id', function (req, res) {
+
+//     let id = req.params.id;
+
+//     for (let i = 0; i < posts.length; i++) {
+
+//         let currentElement = posts[i];
+//         if (currentElement.id == id) {
+//             res.send(currentElement);
+//             break;
+//         }
+//     }
+
+//     res.statusMessage = "User Not found";
+//     res.status();
+// });
+
+
+app.get('/posts/:idUser', function (req, res) {
+
+    let idUser = req.params.idUser;
+    let arrayOfPosts = [];
+    for (let i = 0; i < posts.length; i++) {
+
+        let currentElement = posts[i];
+        if (currentElement.idUser == idUser) {
+            arrayOfPosts.push(currentElement);
+
+        }
+    }
+    res.send(arrayOfPosts);
 
     res.statusMessage = "User Not found";
     res.status();

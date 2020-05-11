@@ -133,8 +133,8 @@ app.get('/users/:id', function (req, res) {
 
     let id = req.params.id;
 
-
     for (let i = 0; i < users.length; i++) {
+
         let currentElement = users[i];
         if (currentElement.id == id) {
             res.send(currentElement);

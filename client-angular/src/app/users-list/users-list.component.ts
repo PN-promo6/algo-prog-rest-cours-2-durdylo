@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data-service/data.service'
-import { Observable, Subscription } from 'rxjs';
-
+import { Observable, Subscription, from } from 'rxjs';
+import { User } from '../models/user/user';
 
 
 @Component({
@@ -12,8 +12,8 @@ import { Observable, Subscription } from 'rxjs';
 export class UsersListComponent implements OnInit {
 
   usersSubcription: Subscription;
-  users: any[];
-  user: any[];
+  users: User[];
+  user: User;
 
   constructor(private dataService: DataService) { }
 

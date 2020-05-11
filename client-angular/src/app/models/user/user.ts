@@ -7,5 +7,6 @@ export class User {
     email: string;
     phone: string;
     latitude: number;
-    longitude: number
+    longitude: number;
+    photo: string;
 }
